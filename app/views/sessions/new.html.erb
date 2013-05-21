@@ -1,0 +1,14 @@
+<h1>Sign in</h1>
+<p><%= flash[:error].to_s	-%></p>
+<p><%= form_for @user, url: '/sessions' do |s|%></p>
+<p>
+	<%= s.label("邮箱:")%>
+	<%= s.text_field :email%>
+</p><br/>
+<p>
+	<%=	s.label("密码:")%>
+	<%=	s.password_field :password%>
+</p>
+<%=	s.submit("登录")%>
+
+<% end %>

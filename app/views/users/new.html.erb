@@ -1,0 +1,21 @@
+<h1>新用户注册</h1>
+<b>请输入您的注册信息</b><br>
+<b>注意：请务必输入有效的邮箱用于接收激活邮件</b><br>
+<p><%= flash[:error].to_s -%></p>
+<%= form_for @user do |u| %>
+	<p>
+		<%=u.label ("用户名:") %>
+		<%=u.text_field :name %>
+	</p><br/>
+	<p>
+		<%=u.label ("邮箱:") %>
+		<%=u.text_field :email %>
+	</p><br/>
+	<p>
+		<%=u.label("密码:")%>
+		<%=u.password_field :password %>
+	</p><br/>
+<p><%= u.submit("注册！")%>  |	<%= link_to "Sign in !"%></p>
+<% end  %>
+
+	

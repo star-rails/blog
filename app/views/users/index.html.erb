@@ -1,0 +1,12 @@
+<h1>All User</h1>
+<p><%= flash[:success] -%></p>
+<%= paginate @users %>
+<ul class="users">
+  <% @users.each do |user| %>
+    <li>
+      <%= link_to user.name, user %>
+    | <%= link_to "Delete",user,method: :Delete , confirm: "确定删除？"%>
+    </li>
+<% end %>
+</ul>
+<%= paginate @users %>
