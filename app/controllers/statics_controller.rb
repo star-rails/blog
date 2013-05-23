@@ -1,7 +1,11 @@
 class StaticsController < ApplicationController
 	def home
 	end
-	def index
+
+	def index		
+	end
+
+	def show
 		
 	end
 end

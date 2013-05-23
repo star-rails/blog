@@ -1,5 +1,5 @@
 @import "bootstrap";
-
+.navbar .nav > li { float: none; }
 /* universal */
 
 html {
@@ -85,6 +85,7 @@ footer a {
   color: #555;
 }
 
+
 footer a:hover {
   color: #222;
 }
@@ -101,4 +102,15 @@ footer ul {
 footer ul li {
   float: left;
   margin-left: 10px;
+}
+
+ul.pull-right {
+  overflow:hidden; zoom:1;
+}
+ul.pull-right li {
+
+  width: 120px;
+  height: 32px;
+  display:inline-block;
+  float: clear;
 }
