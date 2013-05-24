@@ -4,9 +4,4 @@ module SessionsHelper
 			@user ||= User.where(id: session[:user_id]).first
 		end
 	end
-
-
-
-
-	
 end

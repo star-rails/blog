@@ -1,0 +1,18 @@
+<h1>上传图片</h1>
+<%= form_for @image ,:html => {:multipart => true} do |f| %>
+<div class="field">
+	<%= f.label ("标题:") %><br />
+	<%= f.text_field :title %>
+</div>
+<div class="field">
+	<%= f.label ("内容:") %><br />
+	<%= f.text_area :content %>
+</div>
+<div class="field">
+	<label>图片</label>
+	<%= f.file_field :src %>
+</div>
+<div class="actions">
+	<%= f.submit("上传") %>
+</div>
+<% end -%>

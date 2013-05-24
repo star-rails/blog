@@ -2,11 +2,15 @@ Blog::Application.routes.draw do
   root :to => "statics#home"
   resources :statics
   resources :users
-  resources :sessions, only: [:new , :create, :destroy]
-
   match '/register', to: 'users#new'
-  match '/login', to: 'sessions#new'
+
+  resources :sessions, only: [:new , :create, :destroy]
   match '/logout', to: 'sessions#destroy'
+  match '/login', to: 'sessions#new'
+
+  resources :images ,  only: [:new , :create, :destroy]
+  
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
