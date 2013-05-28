@@ -1,0 +1,8 @@
+.register-h1{
+	color: #ff9933;
+	background-color: #ccccff;  /*背景颜色为棕黄色#ff9933;*/
+	font-size: 40px;
+	padding: 5px;
+	margin-top: 0px;  /*离顶部距离*/
+	text-decoration: underline;
+}

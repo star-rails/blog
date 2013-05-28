@@ -4,7 +4,10 @@ gem 'rails', '3.2.13'
 gem 'bootstrap-sass'
 gem 'bcrypt-ruby'
 gem 'bootstrap-will_paginate'
+gem "mini_magick"
 gem "kaminari", "~> 0.14.1"
+gem "rmagick"
+gem "mime-types"
 
 gem 'carrierwave'
 

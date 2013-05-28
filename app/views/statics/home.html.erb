@@ -1,23 +1,40 @@
-<% if current_user.present? %>
-<div>
-	<div class="center hero-unit">
-	<% @images.each_with_index do |img,index| -%>
+<html>	
+<head>
+	<title></title>
+</head>
+<body>	
+	<% if current_user.present? %>
+	    <h1 class="class-h1">欢迎进入个人页面!</h1> 
+	    <% @images.each_with_index do |img,index| -%>
+	    <p>标题：<span><%= img.title%></span></p>	
+	    <!-- <p>简介：<span><%= img.content %></span></p> -->
+	    <p><%= image_tag img.src.url %></p>
+	    <%end-%>
+	<% else %>
+	   <div class="center hero-unit">
+		<% @images.each_with_index do |img,index| -%>
 		<p>标题：<%= img.title%></p>
 		<p><%= img.content %></p>
 		<p><%= image_tag img.src.url %></p>
-	<%end-%>
-</div>
-<% else %>
-<div>
-	<div class="center hero-unit">
-	<% @images.each_with_index do |img,index| -%>
-		<p>标题：<%= img.title%></p>
-		<p><%= img.content %></p>
-		<p><%= image_tag img.src.url %></p>
-	<%end-%>
+		<%end-%>
+	   </div>
+	<% end %>
+</body>
+</html>
 
-</div>
-<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

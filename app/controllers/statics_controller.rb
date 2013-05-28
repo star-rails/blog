@@ -6,7 +6,9 @@ class StaticsController < ApplicationController
 	def index		
 	end
 
-	def show
+	def show		
+	end
+	def new
 		
 	end
 end
