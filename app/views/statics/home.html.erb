@@ -1,58 +1,51 @@
-<html>	
-<head>
-	<title></title>
-</head>
-<body>	
-	<% if current_user.present? %>
-	    <h1 class="class-h1">欢迎进入个人页面!</h1> 
-	    <% @images.each_with_index do |img,index| -%>
-	    <p>标题：<span><%= img.title%></span></p>	
-	    <!-- <p>简介：<span><%= img.content %></span></p> -->
-	    <p><%= image_tag img.src.url %></p>
-	    <%end-%>
-	<% else %>
-	   <div class="center hero-unit">
-		<% @images.each_with_index do |img,index| -%>
-		<p>标题：<%= img.title%></p>
-		<p><%= img.content %></p>
-		<p><%= image_tag img.src.url %></p>
-		<%end-%>
-	   </div>
-	<% end %>
-</body>
-</html>
+<style type ="text/css">
+  ul { list-style-type: none; }
 
+  div#container{
+    width: 550px;
+    margin: 60px auto  40px;
+    background-color: #DDDDDD; 
+  }
+  ul#profiles{
+    margin: 0;
+    padding: 10px;
+  }
+  ul#profiles li{
+    padding: 10px;
+  }
+  img {
+    width:200px  ;
+    height: ;
+    max-width: 100%;
+    border: 0;
+  }
+  .paginate {
+    width: 550px;
+    margin: 60px auto  40px;
+  }
+</style>
+  <div id="container">    
+    <div>
+      <% if current_user.present? %>
+        <ul id="profiles">
+          <% @images.each_with_index do |img,index| -%>
+          <!-- <li>标题:<%= img.title%></li> -->
+          <li><%= image_tag img.src.url %></li> 
+          <%end-%>
+        </ul>
+    </div>         
+    <div>
+      <% else %>
+        <ul>
+          <% @images.each_with_index do |img,index| -%>
+          <!-- <p>标题：<%= img.title%></p> -->
+          <li><%= image_tag img.src.url %></li>
+          <%end-%>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+  <div class="paginate">
+    <%= paginate @images %>
+  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div>
-	<p><%= flash[:error].to_s -%></p>
-	<div class="center hero-unit">
-		<h1>Welcome to the Ruby on Rails</h1>
-		<h2>
-			This is the home page for the
-			<a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-			sample application.
-		</h2>
-
-		<%= link_to "Sign up now!", register_path, class: "btn btn-large btn-primary" %>
-	</div>
-
-	<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
-
-</div> -->

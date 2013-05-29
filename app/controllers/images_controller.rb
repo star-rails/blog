@@ -3,7 +3,6 @@ class ImagesController < ApplicationController
   	@image=Image.new
   end
   def create
-    # @imagea= Image.page(params[:page]).per(1)
   	image = Image.new :title => params[:image][:title],
   	                  :content => params[:image][:content]
   	upload = PhotoUploader.new

@@ -1,6 +1,6 @@
 class StaticsController < ApplicationController
 	def home
-		@images = Image.all
+		@images = Image.page(params[:page]).per(4)
 	end
 
 	def index		

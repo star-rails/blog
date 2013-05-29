@@ -1,24 +1,32 @@
-	<!-- 固定在页面的顶部 -->
-<header class="navbar navbar-fixed-top" >
-	<div class="navbar-inner">
-		<div class="container">
-            <%= link_to "Ruby on rails ",:root, id: "logo" %>
-            <nav>
-                <ul class="nav pull-right">
-                    <li><%= link_to "注册", register_path %></li>                 
-                    <li><div id="login_logout">
-                        <% unless current_user.blank? %>
-                        欢迎 :
-                        <%= current_user.name %>
-                        <%= link_to "退出", logout_path %>
-                        <%= link_to"上传图片",new_image_path%>
-                        <% else %>
-                        <%= link_to "登录",  login_path %>
-                        <%  end  %>
-                    </div></li>
-                    <li><%= link_to "用户信息", users_path %></li>
-                </ul>
-            </nav>
-        </div>
-    </div>               
-</header>
+<style>
+.headline {
+
+ width:1000px; height:auto;
+ margin: 0 auto;
+ overflow: hidden;
+ zoom:1;
+}
+.headline div {
+    float:left;
+    margin-right: 10px;
+}
+</style>
+<div class="headline">
+    <div>
+        <%= link_to "Ruby on rails ",:root, id: "logo" %>
+    </div>
+    <div>     
+        <% unless current_user.blank? %>
+        欢迎 :
+        <%= current_user.name %>
+        <%= link_to "退出", logout_path %>
+        <%= link_to"上传图片",new_image_path%>
+        <% else %>
+        <%= link_to "登录",  login_path %>
+        <span><%= link_to "注册", register_path %></span>                
+        <%  end  %>
+    </div>
+    <div>
+        <span><%= link_to "用户信息", users_path %></span>            
+    </div>
+</div>            
