@@ -17,6 +17,9 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @image = Image.new
+    @image=Image.find_by_src(params[:src].to_s.split('/').last)
+  end
+
+  def index
   end
 end

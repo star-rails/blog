@@ -1,51 +1,73 @@
 <style type ="text/css">
-  ul { list-style-type: none; }
-
-  div#container{
-    width: 550px;
-    margin: 60px auto  40px;
-    background-color: #DDDDDD; 
+  div { list-style-type: none; }
+  div#content{
+    width: 1000px;
+    margin: 70px 350px ;
+    padding: 10px ;
+    background-color: #444444; 
   }
-  ul#profiles{
-    margin: 0;
+  div#showleft{
+    width: 500px;
+    margin: 30px 0px 10px; 
+    background-color: #888888;
+    border-style: solid;
+  }
+  div#itme{
+    background: none repeat scroll 0 0 #000000;
+    border-bottom: 1px solid #1F1F1F;
+    height: 160px;
+    overflow: hidden;
     padding: 10px;
   }
-  ul#profiles li{
-    padding: 10px;
+  div#itmelist #itme_left {
+    color: #FFFFFF;
+    width: 200px;
+    max-width: 100%;
+    padding: 30px;
+    float: right;
   }
   img {
     width:200px  ;
-    height: ;
+    margin: 10px;
     max-width: 100%;
-    border: 0;
-  }
-  .paginate {
-    width: 550px;
-    margin: 60px auto  40px;
-  }
-</style>
-  <div id="container">    
-    <div>
-      <% if current_user.present? %>
-        <ul id="profiles">
-          <% @images.each_with_index do |img,index| -%>
-          <!-- <li>标题:<%= img.title%></li> -->
-          <li><%= image_tag img.src.url %></li> 
-          <%end-%>
-        </ul>
-    </div>         
-    <div>
-      <% else %>
-        <ul>
-          <% @images.each_with_index do |img,index| -%>
-          <!-- <p>标题：<%= img.title%></p> -->
-          <li><%= image_tag img.src.url %></li>
-          <%end-%>
-        </ul>
-      <% end %>
-    </div>
-  </div>
-  <div class="paginate">
-    <%= paginate @images %>
-  </div>
+    border:medium none;
 
+  }
+  .paginate{
+    clear: both;;
+    background-color: #000000;
+    margin: auto ;
+    max-width: 100%;
+    padding: 20px 0 15px 20px;
+  }
+
+</style>
+  <div id="content">    
+    <div id="showleft">
+      <% if current_user.present? %>
+        <div id="itmelist">                                       
+          <% @images.each_with_index do |img| -%>
+            <div id="itme">
+              <div id="itme_left">                 
+                <a>标题:<%= img.title%></a></div>
+                <div><%= link_to image_tag(img.src.url), articles_path(src: img.src) %></div>              
+            </div>  
+          <%end-%>           
+        </div>                        
+      <% else %>
+        <div id="itmelist">                                       
+          <% @images.each_with_index do |img| -%>
+            <div class="itme">
+              <div id="itme_left">           
+                <a>标题:<%= img.title%></a></div>
+                <div><%= link_to image_tag(img.src.url), articles_path %></div> 
+              </div>
+            </div>  
+          <%end-%>              
+        </div>
+      <% end %>
+      <div class="paginate">
+        <%= paginate @images %>
+      </div> 
+    </div>         
+  </div>

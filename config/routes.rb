@@ -2,13 +2,14 @@ Blog::Application.routes.draw do
   root :to => "statics#home"
   resources :statics
   resources :users
-  match '/register', to: 'users#new'
+  get '/register', to: 'users#new'
 
   resources :sessions, only: [:new , :create, :destroy]
-  match '/logout', to: 'sessions#destroy'
-  match '/login', to: 'sessions#new'
+  get '/logout', to: 'sessions#destroy'
+  get '/login', to: 'sessions#new'
 
-  resources :images ,  only: [:new , :create, :destroy]
+  resources :images 
+  get '/articles' ,to: 'images#show'
   
   
 
