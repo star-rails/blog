@@ -12,14 +12,14 @@
     background-color: #888888;
     border-style: solid;
   }
-  div#itme{
+  .itme{
     background: none repeat scroll 0 0 #000000;
     border-bottom: 1px solid #1F1F1F;
     height: 160px;
     overflow: hidden;
     padding: 10px;
   }
-  div#itmelist #itme_left {
+  .itme_left {
     color: #FFFFFF;
     width: 200px;
     max-width: 100%;
@@ -45,22 +45,22 @@
   <div id="content">    
     <div id="showleft">
       <% if current_user.present? %>
-        <div id="itmelist">                                       
+        <div class="itmelist">                                       
           <% @images.each_with_index do |img| -%>
-            <div id="itme">
-              <div id="itme_left">                 
+            <div class="itme">
+              <div class="itme_left">                 
                 <a>标题:<%= img.title%></a></div>
-                <div><%= link_to image_tag(img.src.url), articles_path(src: img.src) %></div>              
+                <div><%= link_to image_tag(img.src.url), articles_path(src: img.src) %></div>     
             </div>  
           <%end-%>           
         </div>                        
       <% else %>
-        <div id="itmelist">                                       
+        <div class="itmelist">                                       
           <% @images.each_with_index do |img| -%>
             <div class="itme">
-              <div id="itme_left">           
+              <div class="itme_left">           
                 <a>标题:<%= img.title%></a></div>
-                <div><%= link_to image_tag(img.src.url), articles_path %></div> 
+                <div><%= link_to image_tag(img.src.url), articles_path(src: img.src) %></div> 
               </div>
             </div>  
           <%end-%>              

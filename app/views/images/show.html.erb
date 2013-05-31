@@ -3,14 +3,130 @@ body{
 	background-color:#DDDDDD;
 }	
 div#conter{
-	width: 1000px;
-	margin: 70px 350px ;
-	padding: 10px ;
-	background-color: #ffffff;
+	width:  982px;
+	height: auto;
+	margin: 30px auto;
+	padding: auto ;
+	background-color: #FFFFFF ;
 }
-</style>
+div#tag{
+	height: 100px;
+	/*margin: auto 3px auto;*/
+	padding: 4px ; 
+  background-color:#AAAAAA;
+  border-bottom: 1px solid #EDEDED;
+}
+div#details{
+	height: auto;
+	margin: auto 10px auto;
+	padding: 10px; 
+  background-color: #ffffff;
+  border-bottom: 1px solid #EDEDED;
+}
+div#details img{
+	width:300px  ;
+  border:medium none;
+  vertical-align: middle;
+   
+}
+div#details h1{
+	font-size: 30px;
+  font-weight: normal;
+  line-height: 1.5em;
+  text-align: center;
+}
+.article{
+	margin:4px; 
+	font-size: 20px;
+  line-height: 1.5em;
+  text-align: center;
+  overflow:hidden;     /*防止内容超出容器或者产生自动换行*/
+  overflow:auto;
+}
+div#comments{
+	height: auto;
+	margin: auto 10px auto;
+	padding: 4px ; 
+  background-color:#FFFFFF;
+  border-bottom: 1px solid #DDDDDD;
+}
+div#post,#list{
+  border-bottom: 2px solid #E5E5E5;
+  color: #777777;
+  height: auto;
+  line-height: 35px;
+  padding: 10px 0 0 25px;
+  background-color: #ffffff;
+
+}
+div#totals{
+	border-bottom: 2px solid #E5E5E5;
+  color: #777777;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 0 0 25px;
+}
+div#comments p.title{
+  border-bottom: 2px solid #E5E5E5;
+  color: #777777;
+  height: 35px;
+  line-height: 35px;
+  margin: 0px auto;
+  padding: 10px 0 0 25px;
+  background-color: #444444;
+}
+div#post textarea{
+  border: 2px solid #CCCCCC;
+  border-radius: 0 0 0 0;
+  color: #666666;
+  overflow: hidden;
+  font-size: 16px;
+  min-height: 60px;
+  margin: auto 30px  ;
+  padding: 25px 260px ;
+  background: none repeat scroll 0 0 #E5E5E5;
+}
+.namebox{
+	margin: 0px 0px  10px;
+	padding: 15px 15px 10px ;
+	height: 70px;
+	width: 80px;
+	font-size: 16px;
+	float: left;
+	color: black;
+	background: repeat scroll 0 0 #666666;
+}
+div#post input{
+  border: 0 none;
+  cursor: pointer;
+  /*float: right;*/
+  height: 35px;
+  width: 100px;
+  background-color: #1E90FF;
+}
+
+</style>    
 <div id="conter">
-	<div>
-		<%= image_tag @image.src  %>
+	<div id="tag">
+		
+	</div>
+	<div id="details">
+        <h1><%= image_tag @image.title%></h1>
+	    <p><%= image_tag @image.src  %></p>
+	    <p class="article"><%= image_tag @image.content%></p>
+	</div>
+	<div id="comments">
+				<p class="title">用户评论:</p>
+		<div id="post">			
+				<div class="namebox">
+					<%= current_user.name %>
+				</div>
+			    <textarea name="comment[body]" placeholder="说说我的看法..."></textarea>	
+				<input type="button" value="发表">
+		</div>
+		<div id="totals">
+			<span>共有?条评论</span>
+		</div>
+		<div id="list"></div>
 	</div>
 </div>

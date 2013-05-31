@@ -8,9 +8,10 @@ Blog::Application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   get '/login', to: 'sessions#new'
 
-  resources :images 
+  resources :images  do
+    resources :comments
+  end
   get '/articles' ,to: 'images#show'
-  
   
 
 
