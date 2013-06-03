@@ -10,11 +10,11 @@ div#conter{
 	background-color: #FFFFFF ;
 }
 div#tag{
-	height: 100px;
-	/*margin: auto 3px auto;*/
-	padding: 4px ; 
-  background-color:#AAAAAA;
-  border-bottom: 1px solid #EDEDED;
+   border-bottom: 2px solid #EDEDED;
+   color: #777777;
+   height: 40px;
+   line-height: 45px;
+   padding: 0 0 0 20px;
 }
 div#details{
 	height: auto;
@@ -30,18 +30,21 @@ div#details img{
    
 }
 div#details h1{
-	font-size: 30px;
-  font-weight: normal;
-  line-height: 1.5em;
-  text-align: center;
+   border-bottom: 2px  #EDEDED;
+   color: #777777;
+   height: 50px;
+   margin: 20px 20px 10px;
+   line-height: 30px ;
+   padding: 4px 20px 0 30px;
+   text-align: center;
 }
 .article{
-	margin:4px; 
-	font-size: 20px;
-  line-height: 1.5em;
-  text-align: center;
-  overflow:hidden;     /*防止内容超出容器或者产生自动换行*/
-  overflow:auto;
+   margin:4px; 
+   font-size: 20px;
+   line-height: 1.5em;
+   text-align: center;
+   overflow:hidden;     /*防止内容超出容器或者产生自动换行*/
+   overflow:auto;
 }
 div#comments{
 	height: auto;
@@ -50,21 +53,21 @@ div#comments{
   background-color:#FFFFFF;
   border-bottom: 1px solid #DDDDDD;
 }
-div#post,#list{
-  border-bottom: 2px solid #E5E5E5;
-  color: #777777;
-  height: auto;
-  line-height: 35px;
-  padding: 10px 0 0 25px;
-  background-color: #ffffff;
+div#post,#list,#comment{
+	border-bottom: 2px solid #E5E5E5;
+	color: #777777;
+	height: auto;
+	line-height: 35px;
+	padding: 10px 0 0 25px;
+	background-color: #ffffff;
 
 }
 div#totals{
-	border-bottom: 2px solid #E5E5E5;
-  color: #777777;
-  height: 30px;
-  line-height: 30px;
-  padding: 0 0 0 25px;
+   border-bottom: 2px solid #E5E5E5;
+   color: #777777;
+   height: 30px;
+   line-height: 30px;
+   padding: 0 0 0 25px;
 }
 div#comments p.title{
   border-bottom: 2px solid #E5E5E5;
@@ -75,17 +78,33 @@ div#comments p.title{
   padding: 10px 0 0 25px;
   background-color: #444444;
 }
-div#post textarea{
+/*.textarea{
   border: 2px solid #CCCCCC;
   border-radius: 0 0 0 0;
   color: #666666;
   overflow: hidden;
   font-size: 16px;
   min-height: 60px;
-  margin: auto 30px  ;
-  padding: 25px 260px ;
-  background: none repeat scroll 0 0 #E5E5E5;
+  margin: 0 15px 10px 100px;
+  overflow: hidden;
+  padding: 30px 40px 20px 100px;
+  background: none repeat scroll 0 0 #ffffff;
 }
+*/
+div#comment textarea {
+    background: none repeat scroll 0 0 transparent;
+    border: 1px solid #CCCCCC;
+    border-radius: 0 0 0 0;
+    color: #666666;
+    display: block;
+    float: right;
+    font-size: 16px;
+    min-height: 60px;
+    overflow: hidden;
+    padding: 2px 8px;
+    width: 590px;
+}
+
 .namebox{
 	margin: 0px 0px  10px;
 	padding: 15px 15px 10px ;
@@ -96,19 +115,18 @@ div#post textarea{
 	color: black;
 	background: repeat scroll 0 0 #666666;
 }
-div#post input{
+/*.button{
   border: 0 none;
   cursor: pointer;
-  /*float: right;*/
   height: 35px;
   width: 100px;
   background-color: #1E90FF;
 }
-
+*/
 </style>    
 <div id="conter">
 	<div id="tag">
-		
+		个人图片页面
 	</div>
 	<div id="details">
         <h1><%= image_tag @image.title%></h1>
@@ -116,17 +134,28 @@ div#post input{
 	    <p class="article"><%= image_tag @image.content%></p>
 	</div>
 	<div id="comments">
-				<p class="title">用户评论:</p>
-		<div id="post">			
-				<div class="namebox">
-					<%= current_user.name %>
-				</div>
-			    <textarea name="comment[body]" placeholder="说说我的看法..."></textarea>	
-				<input type="button" value="发表">
+			<p class="title">用户评论:</p>
+		<div id="post">		       		
+			<%= form_for @comment,:url=>"/images/add_comment",:method=>"post" do |f|  %>
+			<div class="namebox">
+				<%= current_user.name %>
+			</div>
+					<input type="hidden" value="<%=@image.id%>" name="img_id" />
+					<input type="hidden" value="<%=request.url%>" name="ref" />
+			    <%= f.text_area :commenter,{:placeholder => "说说我的看法..."} %>
+					<%= f.submit("发表") %>
+				<%end-%>
 		</div>
 		<div id="totals">
 			<span>共有?条评论</span>
 		</div>
-		<div id="list"></div>
+		<div id="list">
+			<% @comments.each do |comment| -%>
+		      <div class="comment">		        	
+				    <div ><%= comment.user.name %></div>
+				    <div><%= comment.commenter %></div>
+				  </div>
+		  <% end -%>	
+		</div>
 	</div>
 </div>

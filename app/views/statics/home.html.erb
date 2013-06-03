@@ -49,8 +49,11 @@
           <% @images.each_with_index do |img| -%>
             <div class="itme">
               <div class="itme_left">                 
-                <a>标题:<%= img.title%></a></div>
-                <div><%= link_to image_tag(img.src.url), articles_path(src: img.src) %></div>     
+                <a>标题:<%= img.title%></a>
+              </div>
+              <div>
+                <%= link_to image_tag(img.src.url), articles_path(src: img.src) %>
+              </div>     
             </div>  
           <%end-%>           
         </div>                        
@@ -59,10 +62,12 @@
           <% @images.each_with_index do |img| -%>
             <div class="itme">
               <div class="itme_left">           
-                <a>标题:<%= img.title%></a></div>
-                <div><%= link_to image_tag(img.src.url), articles_path(src: img.src) %></div> 
+                <a>标题:<%= img.title%></a>
               </div>
-            </div>  
+              <div>
+                <%= link_to image_tag(img.src.url), articles_path(src: img.src) %>
+              </div> 
+            </div>
           <%end-%>              
         </div>
       <% end %>

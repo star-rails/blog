@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20130531065807) do
     t.string   "commenter"
     t.text     "body"
     t.integer  "image_id"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

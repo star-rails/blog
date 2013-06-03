@@ -12,6 +12,7 @@ Blog::Application.routes.draw do
     resources :comments
   end
   get '/articles' ,to: 'images#show'
+  post '/images/add_comment' => "images#add_comment"
   
 
 

@@ -4,7 +4,7 @@ class CreateComments < ActiveRecord::Migration
       t.string :commenter
       t.text :body
       t.references :image
-
+      t.references :user
       t.timestamps
     end
     add_index :comments, :image_id
